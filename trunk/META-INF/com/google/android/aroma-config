@@ -1,0 +1,99 @@
+#
+# AROMA Installer 2.56 - AROMA Installer Test Script Configuration
+#       (c) 2011-2012 by Ahmad Amarullah
+#           amarullz - xda-developers
+#           http://www.amarullz.com/
+#
+#       Binary Version  : 2.56
+#       Binary Codename : Edelweis
+#
+#       DX ModPack for HTC Desire X - xpirt
+#       Credits: lyapota, baadnewz, ckpv5
+#
+
+# Settings
+ini_set("force_colorspace","rgba");
+ini_set("rom_name","DX ModPack");
+ini_set("rom_version","1.0");
+ini_set("rom_author","xpirt");
+ini_set("rom_device","HTC Desire X");
+ini_set("rom_date","2014");
+fontresload( "0", "ttf/Roboto-Regular.ttf", "12" );
+fontresload( "1", "ttf/Roboto-Regular.ttf", "18" );
+theme("sense");
+ini_set("transition","stack");
+#
+
+viewbox(
+    "Welcome",
+    "\n\n\n\n\n"+
+    "You're about to flash:\n"+
+    ini_get("rom_name") + " for " + ini_get("rom_device") +  "\n\n\n"+
+    "  VERSION\t: <b><#selectbg_g>"+ini_get("rom_version")+"</#></b>\n\n"+
+    "Press <b>Next</b> to continue the installation...",
+    "@welcome"
+);
+
+agreebox(
+    "Important notes!",
+    "",
+    "@agreement",
+    resread("gnu.txt"),
+    "I agree with these Terms of Use.",
+    "You need to agree with the Terms of Use..."
+);
+
+if
+  confirm(
+    "Requirements!",
+    resread("read_me.txt"),
+    "@alert",
+    "Yes",
+    "No"
+  ) == "no"
+then
+  exit();
+endif;
+
+selectbox(
+  "Mods",
+  "Select your mods:",
+  "icons/mods",
+  "mods.prop",
+
+  "Unlock Weather Animation","Enable Sense 4.x Unlock Weather Animation",1,
+  "Mail w/o Exchange Security","Mail app without Exchange Security",1,
+  "Browser Debug Menu","Enable Debug Menu in stock browser",1,
+  "Unlimited text characters","Enable unlimited text characters in Message app",1,
+  "Launcher w/o Market","Hide Play Store button in launcher appdrawer",1,
+  "AOSP Recent apps","Enable AOSP style Recent apps",1,
+  "lpa","Disable lpa decoding",1,
+  "FastDormancy","Disable Fast Dormancy",1,
+  "Screenshot","Disable HTCs screenshot feature",1,
+  "OpenVPN","Enable OpenVPN support",1
+);
+
+viewbox(
+  "Ready To Install",
+  "All informations has been collected for installation.\n\n"+
+  "Press <b>Next</b> to start the installation..."+
+  "If you want to review or change any of your installation settings, press <b>Back</b>.",
+  "@install"
+);
+
+install(
+  "Installing",
+  "Installing <b>" + ini_get("rom_name") + " " + ini_get("rom_version") + "</b>" +
+  "...\nPlease wait until it's finished...",
+  "icons/install"
+);
+
+ini_set("text_next", "Finish");
+
+viewbox(
+  "Installation Completed",
+  "<#080>Congratulations...</#>\n\n"+
+  ini_get("rom_name") + " " + ini_get("rom_version") + " has been installed successfully.\n\n"+
+  "Tap Finish, and Reboot your phone.\n\nThanks.",
+  "icons/info"
+);

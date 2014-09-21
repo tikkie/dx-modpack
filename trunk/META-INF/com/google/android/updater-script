@@ -1,0 +1,163 @@
+#
+#    DX ModPack for HTC Desire X - xpirt
+#    Credits: lyapota, baadnewz, ckpv5
+#
+
+# mounting
+set_progress(0.01);
+ui_print("@Installing ROM");
+ui_print("-- Mounting Data");
+run_program("/sbin/busybox", "mount", "/data");
+ui_print("-- Mounting System");
+run_program("/sbin/busybox", "mount", "/system");
+set_progress(0.02);
+
+# removing files/cache
+delete("/data/dalvik-cache/system@framework@framework.jar@classes.dex");
+delete("/data/dalvik-cache/system@framework@services.jar@classes.dex");
+delete("/data/dalvik-cache/system@framework@android.policy.jar@classes.dex");
+delete("/data/dalvik-cache/system@app@Prism.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@SystemUI.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@WeatherAnimation.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@Fusion.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@Mail+nonprime.apk@classes.dex");
+delete_recursive("/cache");
+set_progress(0.05);
+
+# extracting
+show_progress(0.45, "-4000");
+ui_print("-- Extract scripts");
+package_extract_dir("xpirt", "/sdcard/modpack");
+set_perm_recursive(0, 0, 0755, 0755, "/sdcard/modpack");
+ui_print("-- Installing framework");
+package_extract_dir("system", "/system");
+set_progress(0.50);
+
+# installing
+show_progress(0.30, "-3000");
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.1") == "1"
+then
+    ui_print("-- Unlock Weather Animation");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_weather_anim", "1");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_weather_anim", "0");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.2") == "1"
+then
+    ui_print("-- Mail without Exchange Security");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_exchange_security", "1");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_exchange_security", "0");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.3") == "1"
+then
+    ui_print("-- Browser Debug Menu");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_debug_menu", "1");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_debug_menu", "0");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.4") == "1"
+then
+    ui_print("-- Message app with unlimited text characters");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_sms_huge_text", "1");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_sms_huge_text", "0");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.5") == "1"
+then
+    ui_print("-- Hide Play Store button in launcher appdrawer");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_market_support", "0");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_market_support", "1");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.6") == "1"
+then
+    ui_print("-- AOSP style Recent apps");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_htc_recent_app", "0");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_htc_recent_app", "1");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.7") == "1"
+then
+    ui_print("-- Disable lpa decoding");
+    run_program("/sdcard/modpack/set_build_prop.sh", "lpa.decode", "false");
+    run_program("/sdcard/modpack/set_build_prop.sh", "tunnel.decode", "false");
+    run_program("/sdcard/modpack/set_build_prop.sh", "lpa.use-stagefright", "false");
+else
+    run_program("/sdcard/modpack/set_build_prop.sh", "lpa.decode", "true");
+    run_program("/sdcard/modpack/set_build_prop.sh", "tunnel.decode", "true");
+    run_program("/sdcard/modpack/set_build_prop.sh", "lpa.use-stagefright", "true");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
+then
+    ui_print("-- Disable Fast Dormancy");
+    run_program("/sdcard/modpack/set_build_prop.sh", "ro.ril.fast.dormancy.rule", "0");
+else
+    run_program("/sdcard/modpack/set_build_prop.sh", "ro.ril.fast.dormancy.rule", "1");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
+then
+    ui_print("-- Disable HTCs screenshot feature");
+    run_program("/sdcard/modpack/set_build_prop.sh", "ro.htc.framework.screencapture", "false");
+else
+    run_program("/sdcard/modpack/set_build_prop.sh", "ro.htc.framework.screencapture", "true");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
+then
+    ui_print("-- OpenVPN support");
+    package_extract_dir("additions/openvpn", "/system");
+    symlink("/system/xbin/ifconfig","/system/xbin/bb/ifconfig");
+    symlink("/system/xbin/route","/system/xbin/bb/route");
+    set_perm(1000, 1000, 0755, "/system/xbin/openvpn");
+else
+endif;
+set_progress(0.80);
+
+# setting permissions and zipaligning
+show_progress(0.10, "-2000");
+ui_print("-- ZipAligning");
+run_program("/sdcard/modpack/zipalign.sh");
+set_progress(0.90);
+set_progress(0.97);
+set_perm_recursive(0, 0, 0755, 0644, "/system/app");
+set_perm_recursive(0, 0, 0755, 0644, "/system/framework");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
+set_perm_recursive(0, 2000, 0755, 0755, "/system/etc/init.d");
+set_perm(0, 0, 06755, "/system/xbin/su");
+
+# unmounting
+run_program("/sbin/busybox", "umount", "/data");
+run_program("/sbin/busybox", "umount", "/system");
+set_progress(1.0);
+
+# finishing
+ui_print("Installation Complete!");
+run_program("/sbin/busybox", "cp", "/tmp/recovery.log", "/sdcard/dx-modpack-xpirt.log");
+
+# removing files
+delete("/sdcard/modpack/sqlite3");
+delete("/sdcard/modpack/tweaks.sh");
+delete("/sdcard/modpack/zipalign");
+delete("/sdcard/modpack/zipalign.sh");
+delete("/sdcard/modpack/set_build_prop.sh");
