@@ -20,7 +20,12 @@ delete("/data/dalvik-cache/system@app@Prism.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@SystemUI.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@WeatherAnimation.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@Fusion.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@Mail.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@Mail+nonprime.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@Message.apk@classes.dex");
+delete("/data/dalvik-cache/system@app@Message+Nonprime.apk@classes.dex");
+delete("/system/app/Mail+nonprime.apk");
+delete("/system/app/Message+Nonprime.apk");
 delete_recursive("/cache");
 set_progress(0.05);
 
