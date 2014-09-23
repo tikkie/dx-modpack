@@ -15,7 +15,8 @@ set_progress(0.02);
 # removing files/cache
 delete("/data/dalvik-cache/system@framework@framework.jar@classes.dex");
 delete("/data/dalvik-cache/system@framework@services.jar@classes.dex");
-delete("/data/dalvik-cache/system@framework@android.policy.jar@classes.dex");
+delete("/data/dalvik-cache/system@app@HtcSoundEnhancerSetting.apkk@classes.dex");
+delete("/data/dalvik-cache/system@app@HtcMusic.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@Prism.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@SystemUI.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@WeatherAnimation.apk@classes.dex");
@@ -26,6 +27,7 @@ delete("/data/dalvik-cache/system@app@Message.apk@classes.dex");
 delete("/data/dalvik-cache/system@app@Message+Nonprime.apk@classes.dex");
 delete("/system/app/Mail+nonprime.apk");
 delete("/system/app/Message+Nonprime.apk");
+delete("/system/vendor/etc/audio_effects.conf");
 delete_recursive("/cache");
 set_progress(0.05);
 

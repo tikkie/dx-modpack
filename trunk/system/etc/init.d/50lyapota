@@ -1,0 +1,17 @@
+#!/system/bin/sh
+# ========================================
+# script for modPack
+# ========================================
+# Created by lyapota - ported by xpirt
+
+if [ ! -d /data/data/com.lyapota.musicbox ]; then
+    mkdir /data/data/com.lyapota.musicbox
+    chmod 0771 /data/data/com.lyapota.musicbox
+    chown 1000:1000 /data/data/com.lyapota.musicbox
+fi
+
+if [ ! -f /data/data/com.lyapota.musicbox/hstate ]; then
+    echo -n "others" >/data/data/com.lyapota.musicbox/hstate
+    chmod 0644 /data/data/com.lyapota.musicbox/hstate
+    chown 1000:1000 /data/data/com.lyapota.musicbox/hstate
+fi
