@@ -107,7 +107,68 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "0"
+then
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_autobrightness_mode", "0");
+else
+    if
+        file_getprop("/tmp/aroma-data/display.prop","selected.0") == "1"
+    then
+        ui_print("-- Display - WebPatrick");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_autobrightness_mode", "1");
+    endif;
+
+    if
+        file_getprop("/tmp/aroma-data/display.prop","selected.0") == "2"
+    then
+        ui_print("-- Display - Moderate");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_autobrightness_mode", "2");
+    endif;
+
+    if
+        file_getprop("/tmp/aroma-data/display.prop","selected.0") == "3"
+    then
+        ui_print("-- Display - Agressive");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_autobrightness_mode", "3");
+    endif;
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "0"
+then
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_brightnessbutton_mode", "0");
+else
+    if
+        file_getprop("/tmp/aroma-data/buttons.prop","selected.0") == "1"
+    then
+        ui_print("-- Buttons - Always ON");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_brightnessbutton_mode", "1");
+    endif;
+
+    if
+        file_getprop("/tmp/aroma-data/buttons.prop","selected.0") == "2"
+    then
+        ui_print("-- Buttons - High values");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_brightnessbutton_mode", "2");
+    endif;
+
+    if
+        file_getprop("/tmp/aroma-data/buttons.prop","selected.0") == "3"
+    then
+        ui_print("-- Buttons - Low values");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_brightnessbutton_mode", "3");
+    endif;
+
+    if
+        file_getprop("/tmp/aroma-data/buttons.prop","selected.0") == "4"
+    then
+        ui_print("-- Buttons - Always OFF");
+        run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_brightnessbutton_mode", "4");
+    endif;
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
 then
     ui_print("-- Disable lpa decoding");
     run_program("/sdcard/modpack/set_build_prop.sh", "lpa.decode", "false");
@@ -120,7 +181,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.11") == "1"
 then
     ui_print("-- Disable Fast Dormancy");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.ril.fast.dormancy.rule", "0");
@@ -129,7 +190,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.12") == "1"
 then
     ui_print("-- Disable HTCs screenshot feature");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.htc.framework.screencapture", "false");
@@ -138,7 +199,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.11") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.13") == "1"
 then
     ui_print("-- OpenVPN support");
     package_extract_dir("additions/openvpn", "/system");
