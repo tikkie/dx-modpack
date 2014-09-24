@@ -100,6 +100,15 @@ endif;
 if
     file_getprop("/tmp/aroma-data/mods.prop","item.0.7") == "1"
 then
+    ui_print("-- Inactive Time tweak");
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_inactive_time", "1");
+else
+    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_inactive_time", "0");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
+then
     ui_print("-- Disable lpa decoding");
     run_program("/sdcard/modpack/set_build_prop.sh", "lpa.decode", "false");
     run_program("/sdcard/modpack/set_build_prop.sh", "tunnel.decode", "false");
@@ -111,7 +120,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
 then
     ui_print("-- Disable Fast Dormancy");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.ril.fast.dormancy.rule", "0");
@@ -120,7 +129,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
 then
     ui_print("-- Disable HTCs screenshot feature");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.htc.framework.screencapture", "false");
@@ -129,7 +138,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.11") == "1"
 then
     ui_print("-- OpenVPN support");
     package_extract_dir("additions/openvpn", "/system");
