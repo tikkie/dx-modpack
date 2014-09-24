@@ -55,7 +55,7 @@ then
   exit();
 endif;
 
-selectbox(
+checkbox(
   "Mods",
   "Select your mods:",
   "icons/mods",
