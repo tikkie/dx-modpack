@@ -137,6 +137,7 @@ then
     symlink("/system/xbin/route","/system/xbin/bb/route");
     set_perm(1000, 1000, 0755, "/system/xbin/openvpn");
 else
+    ui_print("");
 endif;
 set_progress(0.80);
 
@@ -158,13 +159,15 @@ run_program("/sbin/busybox", "umount", "/data");
 run_program("/sbin/busybox", "umount", "/system");
 set_progress(1.0);
 
-# finishing
-ui_print("Installation Complete!");
-run_program("/sbin/busybox", "cp", "/tmp/recovery.log", "/sdcard/dx-modpack-xpirt.log");
-
 # removing files
 delete("/sdcard/modpack/sqlite3");
 delete("/sdcard/modpack/tweaks.sh");
 delete("/sdcard/modpack/zipalign");
 delete("/sdcard/modpack/zipalign.sh");
 delete("/sdcard/modpack/set_build_prop.sh");
+
+# finishing
+ui_print("Installation Complete!");
+run_program("/sbin/busybox", "cp", "/tmp/recovery.log", "/sdcard/dx-modpack-xpirt.log");
+
+run_program("/sbin/sleep", "3");
