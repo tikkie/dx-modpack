@@ -67,6 +67,7 @@ checkbox(
   "Unlimited text characters","Enable unlimited text characters in Message app",1,
   "Launcher w/o Market","Hide Play Store button in launcher appdrawer",1,
   "AOSP Recent apps","Enable AOSP style Recent apps",1,
+  "InactiveTime","Change 'lock phone after' time list",1,
   "lpa","Disable lpa decoding",1,
   "FastDormancy","Disable Fast Dormancy",1,
   "Screenshot","Disable HTCs screenshot feature",1,
