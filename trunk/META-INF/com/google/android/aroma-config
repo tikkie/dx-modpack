@@ -14,7 +14,7 @@
 # Settings
 ini_set("force_colorspace","rgba");
 ini_set("rom_name","DX ModPack");
-ini_set("rom_version","1.0");
+ini_set("rom_version","2.1");
 ini_set("rom_author","xpirt");
 ini_set("rom_device","HTC Desire X");
 ini_set("rom_date","2014");
