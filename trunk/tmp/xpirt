@@ -1,0 +1,7 @@
+# graphic glitches fix by xpirt - protou
+debug.sf.hw = 1
+debug.composition.type = mdp
+debug.enabletr = false
+debug.qctwa.preservebuf = 1
+debug.egl.buffcount=4
+ro.hwui.renderer.disable_opaque=true
