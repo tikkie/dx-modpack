@@ -69,40 +69,40 @@ checkbox(
   "Launcher w/o Market","Hide Play Store button in launcher appdrawer",1,
   "AOSP Recent apps","Enable AOSP style recent apps",1,
   "InactiveTime","Change 'lock phone after' time list",1,
-  "Display", "Set display autobrightness levels",1,
-  "Buttons", "Set custom buttons backlight",1,
+#  "Display", "Set display autobrightness levels",1,
+#  "Buttons", "Set custom buttons backlight",1,
   "lpa","Disable lpa decoding",1,
   "FastDormancy","Disable Fast Dormancy",1,
   "Screenshot","Disable HTCs screenshot feature",1,
   "OpenVPN","Enable OpenVPN support",1
 );
 
-if prop("mods.prop","item.0.8")=="1" then
-  selectbox(
-    "Display",
-    "Select your option:",
-    "icons/mods",
-    "display.prop",
-    
-    "WebPatrick","",1,
-    "Moderate","",0,
-    "Agressive","",0
-  );
-endif;
+#if prop("mods.prop","item.0.8")=="1" then
+#  selectbox(
+#    "Display",
+#    "Select your option:",
+#    "icons/mods",
+#    "display.prop",
+#    
+#    "WebPatrick","",1,
+#    "Moderate","",0,
+#    "Agressive","",0
+#  );
+#endif;
 
-if prop("mods.prop","item.0.9")=="1" then
-  selectbox(
-    "Buttons",
-    "Select your option:",
-    "icons/mods",
-    "buttons.prop",
-    
-    "Always ON","",0,
-    "High values","",0,
-    "Low values","",1,
-    "Always OFF","",0
-  );
-endif;
+#if prop("mods.prop","item.0.9")=="1" then
+#  selectbox(
+#    "Buttons",
+#    "Select your option:",
+#    "icons/mods",
+#    "buttons.prop",
+#    
+#    "Always ON","",0,
+#    "High values","",0,
+#    "Low values","",1,
+#    "Always OFF","",0
+#  );
+#endif;
 
 viewbox(
   "Ready To Install",
