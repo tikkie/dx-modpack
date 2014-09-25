@@ -63,7 +63,7 @@ checkbox(
 
   "Unlock Weather Animation","Enable Sense 4.x Unlock Weather Animation",1,
   "Mail w/o Exchange Security","Mail app without Exchange Security",1,
-  "Volume", "30 pos. media volume control",1,
+#  "Volume", "30 pos. media volume control",1,
   "Browser Debug Menu","Enable Debug Menu in stock browser",1,
   "Unlimited text characters","Enable unlimited text characters in Message app",1,
   "Launcher w/o Market","Hide Play Store button in launcher appdrawer",1,

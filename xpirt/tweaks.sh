@@ -1,6 +1,6 @@
 #!/sbin/sh
 # ========================================
-# script for modPack
+# script for DX ModPack
 # ========================================
 # Created by lyapota
 

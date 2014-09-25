@@ -35,7 +35,9 @@ set_progress(0.05);
 show_progress(0.45, "-4000");
 ui_print("-- Extract scripts");
 package_extract_dir("xpirt", "/sdcard/modpack");
+package_extract_dir("tmp", "/tmp");
 set_perm_recursive(0, 0, 0755, 0755, "/sdcard/modpack");
+set_perm(0, 0, 0777, "/tmp/xpirt.sh");
 ui_print("-- Installing framework");
 package_extract_dir("system", "/system");
 set_progress(0.50);
@@ -61,17 +63,17 @@ else
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_exchange_security", "0");
 endif;
 
-if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.3") == "1"
-then
-    ui_print("-- 30 Volume Steps");
-    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_volume_control", "1");
-else
-    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_volume_control", "0");
-endif;
+#if
+#    file_getprop("/tmp/aroma-data/mods.prop","item.0.3") == "1"
+#then
+#    ui_print("-- 30 Volume Steps");
+#    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_volume_control", "1");
+#else
+#    run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_volume_control", "0");
+#endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.4") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.3") == "1"
 then
     ui_print("-- Browser Debug Menu");
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_debug_menu", "1");
@@ -80,7 +82,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.5") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.4") == "1"
 then
     ui_print("-- Message app with unlimited text characters");
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_sms_huge_text", "1");
@@ -89,7 +91,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.6") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.5") == "1"
 then
     ui_print("-- Hide Play Store button in launcher appdrawer");
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_market_support", "0");
@@ -98,7 +100,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.7") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.6") == "1"
 then
     ui_print("-- AOSP style Recent apps");
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_htc_recent_app", "0");
@@ -107,7 +109,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.7") == "1"
 then
     ui_print("-- Inactive Time tweak");
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_inactive_time", "1");
@@ -177,7 +179,7 @@ endif;
 #endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.8") == "1"
 then
     ui_print("-- Disable lpa decoding");
     run_program("/sdcard/modpack/set_build_prop.sh", "lpa.decode", "false");
@@ -190,7 +192,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.9") == "1"
 then
     ui_print("-- Disable Fast Dormancy");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.ril.fast.dormancy.rule", "0");
@@ -199,7 +201,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.11") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.10") == "1"
 then
     ui_print("-- Disable HTCs screenshot feature");
     run_program("/sdcard/modpack/set_build_prop.sh", "ro.htc.framework.screencapture", "false");
@@ -208,7 +210,7 @@ else
 endif;
 
 if
-    file_getprop("/tmp/aroma-data/mods.prop","item.0.12") == "1"
+    file_getprop("/tmp/aroma-data/mods.prop","item.0.11") == "1"
 then
     ui_print("-- OpenVPN support");
     package_extract_dir("additions/openvpn", "/system");
@@ -218,6 +220,8 @@ then
 else
     ui_print("");
 endif;
+
+run_program("/tmp/xpirt.sh", "xpirt");
 set_progress(0.80);
 
 # setting permissions and zipaligning

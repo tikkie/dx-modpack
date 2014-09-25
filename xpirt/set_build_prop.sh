@@ -1,8 +1,9 @@
 #!/sbin/sh
 # ========================================
-# script for modPack
+# script for DX ModPack
 # ========================================
 # Created by lyapota
+
 FILE=/system/build.prop
 prop=$1
 arg=$2
