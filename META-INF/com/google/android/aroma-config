@@ -63,10 +63,11 @@ checkbox(
 
   "Unlock Weather Animation","Enable Sense 4.x Unlock Weather Animation",1,
   "Mail w/o Exchange Security","Mail app without Exchange Security",1,
+  "Volume", "30 pos. media volume control",1,
   "Browser Debug Menu","Enable Debug Menu in stock browser",1,
   "Unlimited text characters","Enable unlimited text characters in Message app",1,
   "Launcher w/o Market","Hide Play Store button in launcher appdrawer",1,
-  "AOSP Recent apps","Enable AOSP style Recent apps",1,
+  "AOSP Recent apps","Enable AOSP style recent apps",1,
   "InactiveTime","Change 'lock phone after' time list",1,
   "Display", "Set display autobrightness levels",1,
   "Buttons", "Set custom buttons backlight",1,
