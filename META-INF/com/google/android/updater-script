@@ -52,6 +52,7 @@ then
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_weather_anim", "1");
 else
     run_program("/sdcard/modpack/tweaks.sh", "sys", "tweaks_weather_anim", "0");
+    delete("/system/app/Fusion.apk");
 endif;
 
 if
