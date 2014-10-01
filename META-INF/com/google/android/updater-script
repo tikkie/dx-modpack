@@ -231,6 +231,23 @@ else
     ui_print("");
 endif;
 
+if
+    file_getprop("/tmp/aroma-data/xloud.prop","selected.0") == "1"
+then
+    ui_print("-- Installing xLoud Mod");
+    package_extract_dir("additions/xloud", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/xloud.prop","selected.0") == "2"
+then
+    delete("/system/app/AudioEffectService.apk");
+    delete("/system/etc/permissions/com.sonyericsson.audioeffectif.xml");
+    delete("/system/framework/semc_audioeffectif.jar");
+    delete("/system/lib/soundfx/libxloudwrapper.so");
+    delete("/system/vendor/etc/audio_effects.conf");
+endif;
+
 run_program("/tmp/xpirt.sh", "xpirt");
 set_progress(0.80);
 

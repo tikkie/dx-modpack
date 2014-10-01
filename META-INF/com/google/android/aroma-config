@@ -8,7 +8,7 @@
 #       Binary Codename : Edelweis
 #
 #       DX ModPack for HTC Desire X - xpirt
-#       Credits: lyapota, baadnewz, ckpv5
+#       Credits: lyapota, baadnewz, ckpv5, ZeroInfinity
 #
 
 # Settings
@@ -104,6 +104,16 @@ checkbox(
 #    "Always OFF","",0
 #  );
 #endif;
+
+selectbox(
+  "xLoud",
+  "Do you want xLoud Mod?",
+  "icons/mods",
+  "xloud.prop",
+  
+  "Yes","Make my speaker's volume louder",1,
+  "No","Leave my speaker's volume normal",0
+);
 
 viewbox(
   "Ready To Install",
