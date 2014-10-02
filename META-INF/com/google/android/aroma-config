@@ -14,7 +14,7 @@
 # Settings
 ini_set("force_colorspace","rgba");
 ini_set("rom_name","DX ModPack");
-ini_set("rom_version","2.4");
+ini_set("rom_version","2.5");
 ini_set("rom_author","xpirt");
 ini_set("rom_device","HTC Desire X");
 ini_set("rom_date","2014");
@@ -70,6 +70,7 @@ checkbox(
   "AOSP Recent apps","Enable AOSP style recent apps",1,
   "SMS Screen On","Turn on screen when sms/mms received",1,
   "InactiveTime","Change 'lock phone after' time list",1,
+  "Enhanced Camera","with Vol+/Vol- options and more",1,
 #  "Display", "Set display autobrightness levels",1,
 #  "Buttons", "Set custom buttons backlight",1,
   "lpa","Disable lpa decoding",1,
