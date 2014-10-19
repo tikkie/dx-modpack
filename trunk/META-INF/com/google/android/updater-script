@@ -257,6 +257,55 @@ then
     delete("/system/vendor/etc/audio_effects.conf");
 endif;
 
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "1"
+then
+    ui_print("-- Installing Volume2Wake");
+    package_extract_dir("additions/w", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "2"
+then
+    ui_print("-- Installing LongpressBack2Kill");
+    package_extract_dir("additions/l", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "3"
+then
+    ui_print("-- Installing Volume2SkipTracks");
+    package_extract_dir("additions/v", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "4"
+then
+    ui_print("-- Installing Volume2SkipTracks + Volume2Wake");
+    package_extract_dir("additions/v_w", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "5"
+then
+    ui_print("-- Installing LongpressBack2Kill + Volume2Wake");
+    package_extract_dir("additions/l_w", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "6"
+then
+    ui_print("-- Installing LongpressBack2Kill + Volume2SkipTracks");
+    package_extract_dir("additions/l_v", "/system");
+endif;
+
+if
+    file_getprop("/tmp/aroma-data/framework.prop","selected.0") == "7"
+then
+    ui_print("-- Installing LongpressBack2Kill + Volume2Wake + Volume2SkipTracks");
+    package_extract_dir("additions/l_v_w", "/system");
+endif;
+
 run_program("/tmp/xpirt.sh", "xpirt");
 set_progress(0.80);
 
