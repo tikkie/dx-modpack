@@ -1,0 +1,3 @@
+#!/system/bin/sh
+#ViperLTE Volume Wake Tweak
+echo 1 > /sys/keyboard/vol_wakeup

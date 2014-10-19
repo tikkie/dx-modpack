@@ -116,6 +116,21 @@ selectbox(
   "No","Leave my speaker's volume normal",0
 );
 
+selectbox(
+  "Framework",
+  "Select framework mods:",
+  "icons/mods",
+  "framework.prop",
+  
+  "W","Volume2Wake",0,
+  "L","LongpressBack2Kill",0,
+  "V","Volume2SkipTracks",0,
+  "V+W","Volume2SkipTracks + Volume2Wake",0,
+  "L+W","LongpressBack2Kill + Volume2Wake",0,
+  "V+L","LongpressBack2Kill + Volume2SkipTracks",0,
+  "L+V+W","LongpressBack2Kill + Volume2Wake + Volume2SkipTracks",0
+);
+
 viewbox(
   "Ready To Install",
   "All informations has been collected for installation.\n\n"+
